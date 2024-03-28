@@ -1,0 +1,34 @@
+using namespace Coef;
+fprintf(stderr, "|=================================|\n");
+fprintf(stderr, "|             2D Reactor          |\n");
+fprintf(stderr, "|=================================|\n");
+#ifdef CALC_STABLE_FIELD
+fprintf(stderr, "|  [[[calculate stable field]]]   |\n");
+#endif
+fprintf(stderr, "|==================|\n");
+fprintf(stderr, "|  Basic:          |\n");
+fprintf(stderr, "|==================|\n");
+fprintf(stderr, "|  seed   %d\n", seed);
+fprintf(stderr, "|  during [0s, %.2fs] (Nt=%d,dt=%.2f)\n", time_max, Nt, dt);
+fprintf(stderr, "|  in     (Lr,Lz)=(%.2f,%.2f)\n", Lr, Lz);
+fprintf(stderr, "|  with   (Nr,Nz)=(%d,%d)\n", Nr, Nz);
+fprintf(stderr, "|==================|\n");
+fprintf(stderr, "|  Initial Field:  |\n");
+fprintf(stderr, "|==================|\n");
+fprintf(stderr, "|  Ts0  = %.2f\n", Ts0);
+fprintf(stderr, "|  Tc0  = %.2f\n", Tc0);
+fprintf(stderr, "|  Phi0 = %.2f\n", Phi0);
+fprintf(stderr, "|  U0   = %.2f\n", U0);
+fprintf(stderr, "|==================|\n");
+fprintf(stderr, "|  Read from file: |\n");
+fprintf(stderr, "|==================|\n");
+fprintf(stderr, "|  pf   = %s\n", file_pf);
+fprintf(stderr, "|  lc   = %s\n", file_lc);
+fprintf(stderr, "| newton_maxcnt = %d\n", newton_maxcnt);
+fprintf(stderr, "| newton_abstol = %.6f\n", newton_abstol);
+fprintf(stderr, "|=================================\n");
+FILE *f = fopen("data/info.txt", "w");
+fprintf(f, "%d %d %d\n", Nr, Nz, Nt);
+fprintf(f, "%.10f %.10f %.10f\n", Lr, Lz, time_max);
+fclose(f);
+fflush(stderr);
